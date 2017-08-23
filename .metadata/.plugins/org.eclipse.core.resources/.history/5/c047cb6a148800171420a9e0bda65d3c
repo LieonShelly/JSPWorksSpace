@@ -1,0 +1,10 @@
+package com.lieon.data.api.mongod;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
+public class Author {
+	private String id;
+	private String realName;
+	private String nickiName;
+}

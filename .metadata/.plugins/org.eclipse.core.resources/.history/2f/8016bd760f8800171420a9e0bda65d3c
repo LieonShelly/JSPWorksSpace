@@ -1,0 +1,11 @@
+package com.lieon.data.api;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+public class GreetingController {
+
+	@RequestMapping("/")
+	public String sayHI() {
+	return "hello world";
+	}
+}

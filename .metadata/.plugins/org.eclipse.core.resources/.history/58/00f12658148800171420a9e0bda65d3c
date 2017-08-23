@@ -1,0 +1,5 @@
+package com.lieon.data.api.mongod;
+
+public class Author {
+
+}
