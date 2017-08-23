@@ -1,0 +1,4 @@
+package com.lieon.data.logic.topic;  
+public interface TopicRepository  {
+	
+}

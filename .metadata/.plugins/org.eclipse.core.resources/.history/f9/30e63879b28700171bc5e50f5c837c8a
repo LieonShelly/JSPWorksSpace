@@ -1,0 +1,6 @@
+package com.lieon.data.logic.topic;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.support.*;;  
+public interface TopicRepository extends JpaRepository<Topic, String> {
+	
+}

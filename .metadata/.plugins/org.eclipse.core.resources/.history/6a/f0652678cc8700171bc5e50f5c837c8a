@@ -1,0 +1,6 @@
+package com.lieon.data.logic.topic;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.support.CrudMethodMetadata;
+public interface TopicRepository extends CrudRepository   {
+	
+}
