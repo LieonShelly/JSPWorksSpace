@@ -1,0 +1,33 @@
+package com.lieon.data.api.mongod;
+import java.util.List;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.CriteriaDefinition;
+import org.springframework.stereotype.Repository;
+import com.jayway.jsonpath.Criteria;
+
+@Repository
+public class AuthorDao {
+	private MongoTemplate mongoTemplate;
+	
+	public void add(Author author) {
+//		this.mongoTemplate.insert(author);
+	}
+	
+	public void update(Author author) {
+		this.mongoTemplate.save(author);
+	}
+	
+	public void delete(Long id) {
+	org.springframework.data.mongodb.core.query.Query query = new org.springframework.data.mongodb.core.query.Query();
+	query.addCriteria((CriteriaDefinition) Criteria.where("_id").is(id));
+	this.mongoTemplate.remove(query, Author.class);	
+	}
+	
+	public Author findAuthor(long id) {
+		return this.mongoTemplate.findById(id, Author.class);
+	}
+	
+	public List<Author> findAuthorList() {
+		return this.mongoTemplate.findAll(Author.class);
+	}
+}

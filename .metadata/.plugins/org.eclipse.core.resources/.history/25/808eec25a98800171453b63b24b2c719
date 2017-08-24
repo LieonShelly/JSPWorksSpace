@@ -1,0 +1,46 @@
+package com.lieon.data.api.mongod;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.json.JSONObject;
+
+@RestController
+@RequestMapping(value = "/data/mongod")
+public class AuthorController {
+	@Autowired
+	private AuthorService authorService;
+	
+	@RequestMapping("/testauthor")
+	public String sayHI() {
+		return "hello world";
+	}
+	
+	@RequestMapping("/authors")
+	public List<Author> getAuthorlist() {
+	 return	this.authorService.findAuthorList();
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="/authors")
+	public void add(@RequestBody JSONObject jsonObject)  {
+		System.out.println(jsonObject.toString());
+		String userId = new String();
+		String realName = new String();
+		String nickName = new String();
+		try {
+			userId = jsonObject.getString("user_id");
+			realName = jsonObject.getString("real_name");
+			nickName = jsonObject.getString("nick_name");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		Author author = new Author();
+		author.setUserId(userId);
+		author.setRealName(realName);
+		author.setNickiName(nickName);
+		this.authorService.add(author);
+	}
+}

@@ -1,0 +1,15 @@
+package com.lieon.data.api.mongod;
+
+import org.springframework.data.mongodb.core.MongoTemplate;
+
+public class AuthorDao {
+	private MongoTemplate mongoTemplate;
+	
+	public void add(Author author) {
+		this.mongoTemplate.insert(author);
+	}
+	
+	public void update(Author author) {
+		this.mongoTemplate.save(author);
+	}
+}

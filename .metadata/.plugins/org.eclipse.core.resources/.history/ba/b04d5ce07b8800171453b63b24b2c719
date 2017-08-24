@@ -1,0 +1,13 @@
+package com.lieon.data.api.mongod;
+import java.util.List;
+
+import com.lieon.data.api.mongod.Author;
+import com.mysql.jdbc.log.Log;
+
+public interface AuthorDao {
+	int add(Author author);
+	int updte(Author author);
+	int delete(Long id);
+	Author findAuthor(Long id);
+	List<Author> findAuthorList();
+}

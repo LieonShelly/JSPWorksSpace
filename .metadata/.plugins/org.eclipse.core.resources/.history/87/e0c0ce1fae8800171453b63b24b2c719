@@ -1,0 +1,29 @@
+package com.lieon.data.api.mongod;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class AuthorService {
+	@Autowired
+	private AuthorRepository authorRepository;
+	
+	public void add(Author author) {
+		this.authorRepository.insert(author);
+	}
+	
+	public void update(Author author) {
+		this.authorRepository.save(author);
+	}
+	
+	public void delete(Long id) {
+	
+	}
+	
+    public Author findAuthor(String id) {
+    		return this.authorRepository.findOne(id);
+    } 
+    public List<Author> findAuthorList() {
+        return this.authorRepository.findAll();
+    }
+}

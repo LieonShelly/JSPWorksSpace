@@ -1,0 +1,23 @@
+package com.lieon.data.api.mongod;
+
+import javax.management.Query;
+
+import org.springframework.data.mongodb.core.MongoTemplate;
+
+public class AuthorDao {
+	private MongoTemplate mongoTemplate;
+	
+	public void add(Author author) {
+		this.mongoTemplate.insert(author);
+	}
+	
+	public void update(Author author) {
+		this.mongoTemplate.save(author);
+	}
+	
+	public void delete(Long id) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("_id").is(id));
+		this.mongoTemplate.remove(query, Author.class);	
+	}
+}

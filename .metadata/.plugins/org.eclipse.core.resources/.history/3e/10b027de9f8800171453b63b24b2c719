@@ -1,0 +1,49 @@
+package com.lieon.data.api.mongod;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+@RestController
+@RequestMapping(value = "/data/mongod/author")
+public class AuthorController {
+	@Autowired
+	private AuthorService authorService;
+	
+	@RequestMapping("/testAuthor")
+	public String sayHI() {
+		return "hello world";
+	}
+	
+	@RequestMapping("/authors")
+	public List<Author> getAuthorlist() {
+	 return	this.authorService.findAuthorList();
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="/authors")
+	public void add(@RequestBody JSONObject jsonObject) throws JSONException {
+		String userId = null;
+		try {
+			userId = jsonObject.getString("user_id");
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String realName = jsonObject.getString("real_name");
+		String nickName = jsonObject.getString("nick_name");
+		Author author = new Author();
+		author.setId(userId);
+		author.setNickiName(nickName);
+		author.setRealName(realName);
+		try {
+			this.authorService.add(author);
+		} catch (Exception e) {
+			throw new RuntimeException("add error");
+		}
+	}
+}

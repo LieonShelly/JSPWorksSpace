@@ -1,0 +1,8 @@
+package com.lieon.data.api.mongod;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class AuthorService {
+
+}

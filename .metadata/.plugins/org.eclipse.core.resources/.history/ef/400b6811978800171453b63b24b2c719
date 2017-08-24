@@ -1,0 +1,17 @@
+package com.lieon.data.api.mongod;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "/data/mongod/author")
+public class AuthorController {
+	@Autowired
+	private AuthorService authorService;
+	
+	@RequestMapping("/")
+	public void getAuthorlist() {
+		
+	}
+}
